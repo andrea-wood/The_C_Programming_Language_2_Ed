@@ -1,5 +1,5 @@
 /*
-Write a program to print a histogram of the lengths of words in its input. 
+Ex. 1-13: Write a program to print a histogram of the lengths of words in its input. 
 It is easy to draw the histogram with the bars horizontal; 
 a vertical orientation is more challenging.
 */
@@ -11,7 +11,7 @@ a vertical orientation is more challenging.
 #define WOUTSIDE 0 /* outdside the word */
 
 main(void){
-	int c, i, j, x, counter, state, maxvalue, maxvalue_pos;
+	int c, i, j, x, counter, state, maxvalue;
 	int words_length[MAXWDLENGTH];
 
 
@@ -20,7 +20,7 @@ main(void){
 		words_length[i] = 0;
 	}
 	state = WOUTSIDE;
-	maxvalue = maxvalue_pos =counter = 0;
+	maxvalue =counter = 0;
 
 	while((c = getchar()) != EOF){
 
@@ -31,13 +31,11 @@ main(void){
 			if(counter > 0 && counter < MAXWDLENGTH){
 				++words_length[counter-1];
 				if(words_length[counter-1] > maxvalue){
-					maxvalue_pos = counter-1;
 					maxvalue = words_length[counter-1];
 				}
 			} else if(counter > MAXWDLENGTH) {
 				++words_length[MAXWDLENGTH];
 				if(words_length[MAXWDLENGTH] > maxvalue){
-					maxvalue_pos = MAXWDLENGTH;
 					maxvalue = words_length[MAXWDLENGTH];
 				}
 			}
@@ -50,7 +48,6 @@ main(void){
 	if(counter > 0){ 
 		++words_length[counter-1]; 
 		if(words_length[counter-1] > maxvalue){
-			maxvalue_pos = counter-1;
 			maxvalue = words_length[counter-1];
 		}
 	}
