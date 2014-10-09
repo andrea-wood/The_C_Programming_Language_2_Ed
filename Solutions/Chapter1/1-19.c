@@ -1,7 +1,3 @@
-/* 
-Write a program to remove all trailing blanks and tabs from each line of input, 
-and to delete entirely blank lines. 
-*/
 /*
 Write a program to print all input lines that are longer than 80 characters.
 */
@@ -10,23 +6,30 @@ Write a program to print all input lines that are longer than 80 characters.
 #define MAXLEN 1000
 
 int getLine(char line[], int lim);
+void reverse(char s[], int max);
 
 int main(void){
     int len, i, endl_pos;               
     char line[MAXLEN];    
 
     while((len = getLine(line, MAXLEN)) > 0){
-        endl_pos = 0;
-        // find the end of the line
-        for(i = len - 1; (line[i] == ' ' || line[i] == '\t' || line[i] == '\n'); --i){
-            endl_pos = i;
-        }
-
-        for(i = 0; i < endl_pos; ++i){
-            printf("%c", line[i]);
-        }
+        reverse(line, len);
+        printf("%s", line);
     }
     return 0;
+}
+
+void reverse(char s[], int max){
+    int i, j;
+    char rs;
+    j = max - 2;
+
+    for(i = 0; i < j; ++i){
+            rs = s[i];
+            s[i] = s[j]; 
+            s[j] = rs;
+            --j;
+    }
 }
 
 int getLine(char s[], int lim){
