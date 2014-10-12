@@ -28,22 +28,11 @@ void entab(char s[], char ns[]){
 	countSp = nRepTab = x = 0;
 
 	for(i = 0; s[i] != '\0'; ++i){
-        if(s[i] == ' '){
-            for(l = i; s[l] == ' '; ++l){
-                ++countSp;
-            }     
-        } 
-        
-        if(countSp >= NCOL){
-            nRepTab = countSp / NCOL;
-            for(j = 0; j < nRepTab; ++j){
-                ns[x] = TB;
-                ++x;
-            } 
-            i = i + ((NCOL * nRepTab) - 1);
-            countSp = 0;
+        if(s[i] == ' ' && ((i + 1) % NCOL == 0)){
+            ns[x] = TB;
+            ++x;
+            i = i + ((NCOL - i % NCOL) - 1);
         } else{
-            countSp = 0;
         	ns[x] = s[i];
         	++x;
         }
