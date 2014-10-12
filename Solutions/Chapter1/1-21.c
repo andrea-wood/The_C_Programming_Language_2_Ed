@@ -24,8 +24,8 @@ int main(){
 }
 
 void entab(char s[], char ns[]){
-	int i, j, l, x, countSp, nRepTab;
-	countSp = nRepTab = x = 0;
+	int i, x;
+	x = 0;
 
 	for(i = 0; s[i] != '\0'; ++i){
         if(s[i] == ' ' && ((i + 1) % NCOL == 0)){
