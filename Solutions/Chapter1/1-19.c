@@ -9,7 +9,7 @@ int getLine(char line[], int lim);
 void reverse(char s[], int max);
 
 int main(void){
-    int len, i, endl_pos;               
+    int len;               
     char line[MAXLEN];    
 
     while((len = getLine(line, MAXLEN)) > 0){
@@ -25,10 +25,10 @@ void reverse(char s[], int max){
     j = max - 2;
 
     for(i = 0; i < j; ++i){
-            rs = s[i];
-            s[i] = s[j]; 
-            s[j] = rs;
-            --j;
+        rs = s[i];
+        s[i] = s[j]; 
+        s[j] = rs;
+        --j;
     }
 }
 
